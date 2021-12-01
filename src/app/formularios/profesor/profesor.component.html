@@ -1,48 +1,45 @@
 <div class="form-profesor container-lg">
-    <div class="col col-lg">
-        <form action="/app" method="post">
-            <!-- <label for="nombreCompleto">Nombre Completo: </label>
-        <input id="nombreCompleto" type="text" [formControl]="nombreCompleto"> -->
+  <div class="col col-lg">
+    <form action="/app" method="post" [formGroup]="profesorInfo">
+    
 
-            <input class="form-control" id="nombreCompleto" type="text" placeholder="Nombre Completo"
-                [formControl]="nombreCompleto">
+      <input class="form-control" id="nombreCompleto" type="text" placeholder="Nombre Completo"
+        formControlName="nombreCompleto">
 
-            <input class="form-control" id="nombreCompleto" type="text" placeholder="Años de Docencia"
-                [formControl]="aniosDocencia">
+      <input class="form-control" id="nombreCompleto" type="text" placeholder="Años de Docencia"
+        formControlName="aniosDocencia">
 
-<!--             
-            <input class="form-control" id="nombreCompleto" type="text" placeholder="Materias" [formControl]="materias"> -->
+      <!--  <input class="form-control" id="nombreCompleto" type="text" placeholder="Materias" [formControl]="materias"> -->
 
-            <select class="form-select form-control" multiple placeholder="Materias"  aria-label="Materias" [formControl]="materias" style="height: 7rem;">
-                <option>Seleccione sus materias</option>
-                <option value="matematica">Matemática</option>
-                <option value="lengua">Lengua</option>
-                <option value="sociales">Cs. Sociales</option>
-                <option value="naturales">Cs. Naturales</option>
-              </select>
-
-
-            <select class="form-select form-control" [formControl]="horaSemanales">
-                <option>Seleccione cantidad de horas</option>
-                <option autofocus value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-              </select>
+      <select class="form-select form-control" multiple placeholder="Materias" aria-label="Materias"
+        formControlName="materias" style="height: 7rem;">
+        <option>Seleccione sus materias</option>
+        <option value="matematica">Matemática</option>
+        <option value="lengua">Lengua</option>
+        <option value="sociales">Cs. Sociales</option>
+        <option value="naturales">Cs. Naturales</option>
+      </select>
 
 
+      <select class="form-select form-control" formControlName="horaSemanales">
+        <option>Seleccione cantidad de horas</option>
+        <option autofocus value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+      </select>
 
-            <input class="form-control" id="nombreCompleto" type="text" placeholder="¿Cuántos alumnos tiene a cargo?"
-                [formControl]="alumnosACargo">
+      <input class="form-control" id="nombreCompleto" type="text" placeholder="¿Cuántos alumnos tiene a cargo?"
+        formControlName="alumnosACargo">
 
-            <input class="form-control" id="nombreCompleto" type="text" placeholder="¿En que institucion ejerce?"
-                [formControl]="institucion">
+      <input class="form-control" id="nombreCompleto" type="text" placeholder="¿En que institucion ejerce?"
+        formControlName="institucion">
 
-            <input class="form-control" id="nombreCompleto" type="text" placeholder="Ingrese su email"
-                [formControl]="email">
-
-
-
-        </form>
-    </div>
+      <input class="form-control" id="nombreCompleto" type="text" placeholder="Ingrese su email" formControlName="email">
+      
+      
+      
+    </form>
+    <button type="submit" class="btn btn-dark" (click)="onSubmit()" [disabled]="profesorInfo">A Por Ello!</button>
+  </div>
 </div>

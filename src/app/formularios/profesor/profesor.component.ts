@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -9,20 +9,38 @@ import { ReactiveFormsModule, FormControl, FormBuilder } from '@angular/forms';
 })
 export class ProfesorComponent implements OnInit {
 
-  nombreCompleto = new FormControl('');
-  aniosDocencia = new FormControl('');
-  materias = new FormControl('');
-  horaSemanales = new FormControl('');
-  alumnosACargo = new FormControl('');
-  institucion = new FormControl('');
-  email = new FormControl('');
-  
+  //profesorInfo: FormGroup;
 
-  constructor() { }
+  profesorInfo = this.fb.group({
+    nombreCompleto: ['' , Validators.required],
+    aniosDocencia: ['' , Validators.required],
+    materias: ['' , Validators.required],
+    horaSemanales: ['' , Validators.required],
+    alumnosACargo: ['' , Validators.required],
+    institucion: ['' , Validators.required],
+    email: ['' , Validators.required],
+  })
+
+  constructor(private fb: FormBuilder) {
+
+  }
 
 
   ngOnInit(): void {
-  
+    this.profesorInfo.valueChanges.subscribe({
+      next: (change) => {
+        console.log('es invalido el wacho', this.profesorInfo.invalid)
+        console.log('es valido el wacho', this.profesorInfo.valid)
+        console.log(change)
+
+      }
+    })
+
   }
+
+  onSubmit() {
+    console.log(this.profesorInfo.value);
+  }
+
 
 }
