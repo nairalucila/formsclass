@@ -1,7 +1,9 @@
 .form-profesor{
     background-color: aliceblue;
     display: flex;
-    margin: 4rem;
+    justify-content: space-between;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 .form-control{
     margin-bottom: 1rem;

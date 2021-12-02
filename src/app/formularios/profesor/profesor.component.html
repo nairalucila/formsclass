@@ -1,45 +1,56 @@
-<div class="form-profesor container-lg">
-  <div class="col col-lg">
-    <form action="/app" method="post" [formGroup]="profesorInfo">
-    
+<div class=" container form-profesor">
+    <div class="col col-6">
+      <form [formGroup]="profesorInfo">
+        <div class="form-control">
 
-      <input class="form-control" id="nombreCompleto" type="text" placeholder="Nombre Completo"
-        formControlName="nombreCompleto">
+          <input class="form-control" id="nombreCompleto" type="text" placeholder="Nombre Completo"
+            formControlName="nombreCompleto" required>
 
-      <input class="form-control" id="nombreCompleto" type="text" placeholder="Años de Docencia"
-        formControlName="aniosDocencia">
+          <input (keypress)="keyPressNumbers($event)" class="form-control" id="nombreCompleto" type="text" placeholder="Años de Docencia"
+            formControlName="aniosDocencia" required>
 
-      <!--  <input class="form-control" id="nombreCompleto" type="text" placeholder="Materias" [formControl]="materias"> -->
+          <!-- Campo solo numeros -->
+          <div class="alert alert-danger" role="alert" [hidden]="caracterInvalidBis">
+            <span>Caracter no permitido</span>
+          </div>
 
-      <select class="form-select form-control" multiple placeholder="Materias" aria-label="Materias"
-        formControlName="materias" style="height: 7rem;">
-        <option>Seleccione sus materias</option>
-        <option value="matematica">Matemática</option>
-        <option value="lengua">Lengua</option>
-        <option value="sociales">Cs. Sociales</option>
-        <option value="naturales">Cs. Naturales</option>
-      </select>
+          <select class="form-select form-control" placeholder="Materias" aria-label="Materias"
+            formControlName="materias" required>
+            <option disabled>Seleccione sus materias</option>
+            <option autofocus value="matematica">Matemática</option>
+            <option value="lengua">Lengua</option>
+            <option value="sociales">Cs. Sociales</option>
+            <option value="naturales">Cs. Naturales</option>
+          </select>
 
 
-      <select class="form-select form-control" formControlName="horaSemanales">
-        <option>Seleccione cantidad de horas</option>
-        <option autofocus value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-      </select>
+          <select class="form-select form-control" formControlName="horaSemanales" required>
+            <option disabled>Seleccione cantidad de horas</option>
+            <option autofocus value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+          </select>
 
-      <input class="form-control" id="nombreCompleto" type="text" placeholder="¿Cuántos alumnos tiene a cargo?"
-        formControlName="alumnosACargo">
+          <input (keypress)="keyPressNumbers($event)" class="form-control" id="nombreCompleto" type="text" placeholder="¿Cuántos alumnos tiene a cargo?"
+            formControlName="alumnosACargo" required>
 
-      <input class="form-control" id="nombreCompleto" type="text" placeholder="¿En que institucion ejerce?"
-        formControlName="institucion">
+          <!-- Campo solo numeros -->
+          <div class="alert alert-danger" role="alert" [hidden]="caracterInvalid">
+            <span>Caracter no permitido</span>
+          </div>
 
-      <input class="form-control" id="nombreCompleto" type="text" placeholder="Ingrese su email" formControlName="email">
-      
-      
-      
-    </form>
-    <button type="submit" class="btn btn-dark" (click)="onSubmit()" [disabled]="profesorInfo">A Por Ello!</button>
+          <input class="form-control" id="nombreCompleto" type="text" placeholder="¿En que institucion ejerce?"
+            formControlName="institucion" required>
+
+          <input class="form-control" id="nombreCompleto" type="text" placeholder="Ingrese su email"
+            formControlName="email" required>
+
+        </div>
+
+      </form>
+      <button type="button" class="btn btn-dark" (click)="onSubmit()" [disabled]="!profesorInfo.valid">A Por
+        Ello!</button>
+    </div>
   </div>
-</div>
+
